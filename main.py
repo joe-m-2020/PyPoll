@@ -2,23 +2,38 @@ import os
 
 #module for reading csv files
 import csv
-from csv import reader
+
+# from csv import reader
 election_csv = os.path.join('resources', 'election_data.csv')
 
-with open(election_csv,'r') as read_obj:
-    csv_reader = reader(read_obj)
-    list_of_rows = list(csv_reader)
-
-candidates = {"Khan": 0, "Correy": 0, "Li": 0, "O'tooley": 0}
-
+with open(election_csv,'r') as python_csvfile:
+    election_data = csv.reader(python_csvfile, delimiter=',')
+    header = next(election_data)
     
-# read file
+    election_list = []
+    for line in election_data:
+        election_list.append(list(line))
 
-# Results
-print("Election Results")
-l1 = "Election Results\n"
-print("-------------------------")
-l2 = "-------------------------\n"
-total_votes = len(list_of_rows)-1
-print(f"Total Votes:  {total_votes)")
-l3 = f"Total Votes:  {total_votes)}\n"
+    klist = []
+    kval = 0
+    cval = 0
+    lval = 0
+    oval = 0
+    for rows in election_list:
+        for i in rows:
+            if(i=="Khan"):
+                kval = kval+1
+            elif(i=="Correy"):
+                cval = cval+1
+            elif(i=="Li"):
+                lval = lval +1
+            elif(i=="O'Tooley"):
+                oval = oval +1 
+                
+    print("Election Results")
+    l1 = ("Election Results\n")
+    print("-------------------------")
+    l2 = ("-------------------------\n")
+    total_votes = len(election_list)
+    print(f"Total Votes:  {total_votes})")
+    l3 = (f"Total Votes:  {total_votes}\n")
