@@ -29,11 +29,16 @@ with open(election_csv,'r') as python_csvfile:
                 lval = lval +1
             elif(i=="O'Tooley"):
                 oval = oval +1 
-                
+    total_votes = len(election_list)
+    k_perc = kval / total_votes *100
+    c_perc = cval / total_votes * 100
+    l_perc = lval / total_votes * 100
+    o_perc = oval / total_votes * 100
+    
     print("Election Results")
     l1 = ("Election Results\n")
     print("-------------------------")
     l2 = ("-------------------------\n")
-    total_votes = len(election_list)
+    
     print(f"Total Votes:  {total_votes})")
     l3 = (f"Total Votes:  {total_votes}\n")
